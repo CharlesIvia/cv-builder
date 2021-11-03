@@ -1,3 +1,36 @@
-.App {
-  text-align: center;
+/*Initial styling*/
+body {
+  margin: 1.2rem 10vw;
+  background-color: whitesmoke;
+}
+
+/*Header stylign*/
+
+.header {
+  height: 10vh;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  border-bottom: 2px solid #2dbb6f;
+}
+
+.header img {
+  height: 60px;
+  width: 145px;
+}
+
+.header-btns {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  margin: 1.2rem 0;
+}
+
+.header-btn {
+  margin: 0 1.2rem;
+}
+
+.header-btns :nth-child(1) {
+  margin-left: 0;
 }

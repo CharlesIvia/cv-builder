@@ -34,3 +34,49 @@ body {
 .header-btns :nth-child(1) {
   margin-left: 0;
 }
+
+/*Component styling*/
+
+.info {
+  display: flex;
+  flex-direction: column;
+}
+
+.info div {
+  margin: 0.5rem 0;
+}
+
+.info div textarea,
+.info div input {
+  margin-right: 0.5rem;
+  height: 2rem;
+  width: 12rem;
+  padding-left: 0.5rem;
+}
+
+.info div textarea:focus,
+.info div input:focus {
+  outline: none !important;
+  border: 1px solid #2dbb6f;
+  box-shadow: 0 0 2px #2dbb6f;
+}
+
+.btn-div button {
+  width: 12.7rem;
+  padding: 0.5rem;
+  border: 1px solid #2dbb6f;
+  text-align: center;
+}
+
+/*Summary component*/
+
+.summary-info div textarea {
+  width: 32.5vw;
+  height: 7rem;
+  margin-top: 0.2rem;
+}
+
+/*Skills component*/
+.skills-info div input {
+  width: 20vw;
+}

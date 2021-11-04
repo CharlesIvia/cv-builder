@@ -7,9 +7,13 @@ export default function Skills() {
         <h1>What skills do you have?</h1>
       </div>
       <div>
-        <form>
-          <input type="text" placeholder="Add skill"></input>
-          <button>Add Skill</button>
+        <form className="info skills-info">
+          <div>
+            <input type="text" placeholder="Add skill"></input>
+          </div>
+          <div className="btn-div">
+            <button>Add Skill</button>
+          </div>
         </form>
       </div>
     </div>

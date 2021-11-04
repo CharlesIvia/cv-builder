@@ -7,15 +7,19 @@ export default function Experience() {
         <h1>Tell employers what experience you possess</h1>
       </div>
       <div>
-        <form>
-          <input type="text" placeholder="Company"></input>
-          <input type="text" placeholder="Position"></input>
-          <input type="text" placeholder="Roles"></input>
+        <form className="info experience-info">
+          <div>
+            <input type="text" placeholder="Company"></input>
+            <input type="text" placeholder="Position"></input>
+            <input type="text" placeholder="Roles"></input>
+          </div>
           <div>
             <input type="date" placeholder="From"></input>
             <input type="date" placeholder="To"></input>
           </div>
-          <button>Add Exp</button>
+          <div className="btn-div">
+            <button>Add Exp</button>
+          </div>
         </form>
       </div>
     </div>

@@ -6,9 +6,13 @@ export default function Summary() {
       <div>
         <h1>Tell the employer abit about yourself</h1>
       </div>
-      <form>
-        <input placeholder="I am..."></input>
-        <button>Save</button>
+      <form className="info summary-info">
+        <div>
+          <textarea placeholder="I am..."></textarea>
+        </div>
+        <div className="btn-div">
+          <button>Save</button>
+        </div>
       </form>
     </div>
   );

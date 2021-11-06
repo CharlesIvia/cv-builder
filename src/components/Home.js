@@ -29,10 +29,26 @@ export default function Home() {
   });
 
   const [summaryInfo, setSummaryInfo] = useState("");
-  const [skills, setSkills] = useState({
-    skillname: "",
-    skilllist: [],
-  });
+  const [skills, setSkills] = useState([]);
+
+  const [skillvalue, setSkillValue] = useState("");
+
+  let addSkill = (skillname) => {
+    let newSkill = [...skills, { skillname }];
+    setSkills(newSkill);
+  };
+
+  let onSkillChange = (e) => {
+    setSkillValue(e.target.value);
+  };
+
+  let onSkillSubmit = (e) => {
+    e.preventDefault();
+    if (!skillvalue) return;
+    addSkill(skillvalue);
+    console.log(skills);
+    setSkillValue("");
+  };
 
   let handleAllInformationChange = (e) => {
     let value = e.target.value;
@@ -54,25 +70,6 @@ export default function Home() {
   //Summary
 
   //Skills
-
-  let handleSkillsChange = (e) => {
-    setSkills({
-      skillname: e.target.value,
-    });
-  };
-
-  let onSkillsSubmit = (e) => {
-    e.preventDefault();
-    if (skills.skillname !== "") {
-      setSkills({
-        skilllist: [...skills.skillname],
-        skillname: "",
-      });
-    } else {
-      alert("Please add a skill");
-    }
-  };
-
   let onPersonalInfoClick = () => {
     setPersonalInfo(!showPersonalInfo);
     setSummary(false);
@@ -177,9 +174,9 @@ export default function Home() {
             ) : null}
             {showSkills ? (
               <Skills
-                skillsInfo={skills}
-                handleSkillInfo={handleSkillsChange}
-                handleSkillInfoSubmit={onSkillsSubmit}
+                value={skillvalue}
+                skillChange={onSkillChange}
+                skillSubmit={onSkillSubmit}
               />
             ) : null}
             {showExperience ? <Experience /> : null}
@@ -191,7 +188,7 @@ export default function Home() {
           <Output
             personalInfo={personalInformation}
             summaryInfo={summaryInfo}
-            skillsInfo={skills}
+            skills={skills}
           />
         </div>
       </div>

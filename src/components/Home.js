@@ -30,8 +30,36 @@ export default function Home() {
 
   const [summaryInfo, setSummaryInfo] = useState("");
   const [skills, setSkills] = useState([]);
-
   const [skillvalue, setSkillValue] = useState("");
+  const [experienceInfo, setExperienceInfo] = useState({
+    place: "",
+    position: "",
+    start: "",
+    end: "",
+  });
+
+  const [roles, setRoles] = useState([]);
+  const [rolevalue, setRoleValue] = useState("");
+
+  //General logic
+  let handleAllInformationChange = (e) => {
+    let value = e.target.value;
+    setPersonalInformation({
+      ...personalInformation,
+      [e.target.name]: value,
+    });
+
+    setSummaryInfo(value);
+  };
+
+  //Personal Infomation
+  let onPersonalInformationSubmit = (e) => {
+    e.preventDefault();
+    setPersonalInfo(false);
+    setSummary(true);
+  };
+
+  //Skills
 
   let addSkill = (skillname) => {
     let newSkill = [...skills, { skillname }];
@@ -50,26 +78,31 @@ export default function Home() {
     setSkillValue("");
   };
 
-  let handleAllInformationChange = (e) => {
+  //Experience
+
+  let addRole = (rolename) => {
+    let newRole = [...roles, { rolename }];
+    setRoles(newRole);
+  };
+
+  let onRoleChange = (e) => {
+    setRoleValue(e.target.value);
+  };
+
+  let onRoleSubmit = (e) => {
+    e.preventDefault();
+    if (!rolevalue) return;
+    addRole(rolevalue);
+    setRoleValue("");
+  };
+
+  let handleExperienceChange = (e) => {
     let value = e.target.value;
-    setPersonalInformation({
-      ...personalInformation,
+    setExperienceInfo({
+      ...experienceInfo,
       [e.target.name]: value,
     });
-
-    setSummaryInfo(value);
   };
-
-  //Personal Infomation
-  let onPersonalInformationSubmit = (e) => {
-    e.preventDefault();
-    setPersonalInfo(false);
-    setSummary(true);
-  };
-
-  //Summary
-
-  //Skills
   let onPersonalInfoClick = () => {
     setPersonalInfo(!showPersonalInfo);
     setSummary(false);
@@ -179,7 +212,15 @@ export default function Home() {
                 skillSubmit={onSkillSubmit}
               />
             ) : null}
-            {showExperience ? <Experience /> : null}
+            {showExperience ? (
+              <Experience
+                experienceInfo={experienceInfo}
+                experienceChange={handleExperienceChange}
+                value={rolevalue}
+                roleChange={onRoleChange}
+                roleSubmit={onRoleSubmit}
+              />
+            ) : null}
             {showEducation ? <Education /> : null}
             {showAwards ? <Awards /> : null}
           </div>
@@ -189,6 +230,8 @@ export default function Home() {
             personalInfo={personalInformation}
             summaryInfo={summaryInfo}
             skills={skills}
+            experienceInfo={experienceInfo}
+            roles={roles}
           />
         </div>
       </div>

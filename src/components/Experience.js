@@ -1,6 +1,12 @@
 import React from "react";
 
-export default function Experience() {
+export default function Experience({
+  experienceInfo,
+  experienceChange,
+  value,
+  roleChange,
+  roleSubmit,
+}) {
   return (
     <div>
       <div>
@@ -9,16 +15,54 @@ export default function Experience() {
       <div>
         <form className="info experience-info">
           <div>
-            <input type="text" placeholder="Company"></input>
-            <input type="text" placeholder="Position"></input>
-            <input type="text" placeholder="Roles"></input>
+            <input
+              type="text"
+              name="place"
+              value={experienceInfo.place}
+              onChange={experienceChange}
+              placeholder="Company"
+            ></input>
+            <input
+              type="text"
+              name="position"
+              value={experienceInfo.position}
+              onChange={experienceChange}
+              placeholder="Position"
+            ></input>
           </div>
           <div>
-            <input type="date" placeholder="From"></input>
-            <input type="date" placeholder="To"></input>
+            <input
+              type="text"
+              name="start"
+              value={experienceInfo.start}
+              onChange={experienceChange}
+              placeholder="From (2010)"
+            ></input>
+            <input
+              type="text"
+              name="end"
+              value={experienceInfo.end}
+              onChange={experienceChange}
+              placeholder="To (2020)"
+            ></input>
           </div>
           <div className="btn-div">
             <button>Add Exp</button>
+          </div>
+        </form>
+        <form className="info" onSubmit={roleSubmit}>
+          <div>
+            <div>
+              <input
+                type="text"
+                value={value}
+                onChange={roleChange}
+                placeholder="Roles"
+              ></input>
+            </div>
+            <div className="btn-div">
+              <button>Add Role</button>
+            </div>
           </div>
         </form>
       </div>

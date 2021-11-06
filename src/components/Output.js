@@ -1,33 +1,39 @@
 import React from "react";
 
-export default function Output() {
+export default function Output({ personalInfo, summaryInfo, skills }) {
   return (
     <div className="output">
       <div className="info-section personal-section">
         <div>
-          <h2>John Doe</h2>
+          <h2>
+            <span>{personalInfo.firstName || "John"} </span>
+            <span>{personalInfo.lastName || "Doe"}</span>
+          </h2>
         </div>
 
         <div>
-          <h3>Web Developer | Data Analyst</h3>
+          <h3>{personalInfo.profession || "Web Developer | Data Analyst"}</h3>
         </div>
 
         <div>
           <p>
-            <span>Drumvale Road,</span>
-            <span>New York</span>
-            <span>00100</span>
+            <span>
+              {personalInfo.street || "Drumvale Road"}
+              {", "}
+            </span>
+            <span>{personalInfo.city || "New York"} </span>
+            <span>{personalInfo.zipCode || "00100"} </span>
           </p>
         </div>
         <div>
-          <p>+123 74 568 640</p>
+          <p>{personalInfo.phone || "+123 74 568 640"}</p>
         </div>
 
         <div className="email">
-          <p>johndoe@email.com</p>
+          <p>{personalInfo.email || "johndoe@email.com"}</p>
         </div>
         <div className="website">
-          <p>https://johndoe.com</p>
+          <p>{personalInfo.website || "https://johndoe.com"}</p>
         </div>
       </div>
       <div className="info-section skills-section">
@@ -36,11 +42,8 @@ export default function Output() {
         </div>
         <div>
           <p>
-            I am a versatile and curious individual with experience collecting,
-            transforming, organizing and analyzing data to help make informed
-            decisions. I also possess excellent understanding and proficiency of
-            platforms for effective data analysis, including, SQL, Python, R,
-            spreadsheets and Tableau.
+            {summaryInfo ||
+              "I am a versatile and curious individual with experience collecting,transforming, organizing and analyzing data to help make informed decisions. I also possess excellent understanding and proficiency of platforms for effective data analysis, including, SQL, Python, R,spreadsheets and Tableau."}
           </p>
         </div>
       </div>
@@ -49,12 +52,10 @@ export default function Output() {
           <h2>Skills</h2>
         </div>
         <ul>
-          <li>Frontend web development and firebase</li>
-          <li>
-            Proficiency with JS, python, spreadsheets, SQL, R, Tableau, HTML,
-            CSS
-          </li>
-          <li>Strong data analysis and visualization skills</li>
+          <li className="skillexample">Walking like a crab</li>
+          {skills.map((skill) => (
+            <li key={skills.indexOf(skill)}>{skill.skillname}</li>
+          ))}
         </ul>
       </div>
       <div className="info-section experience-section">

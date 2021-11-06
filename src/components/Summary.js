@@ -1,6 +1,6 @@
 import React from "react";
 
-export default function Summary() {
+export default function Summary({ summaryInfo, handleSummaryInfo }) {
   return (
     <div>
       <div>
@@ -8,7 +8,13 @@ export default function Summary() {
       </div>
       <form className="info summary-info">
         <div>
-          <textarea placeholder="I am..."></textarea>
+          <textarea
+            typeof="text"
+            name="summary"
+            value={summaryInfo}
+            onChange={handleSummaryInfo}
+            placeholder="I am..."
+          ></textarea>
         </div>
         <div className="btn-div">
           <button>Save</button>

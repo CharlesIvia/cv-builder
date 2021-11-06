@@ -1,6 +1,13 @@
 import React from "react";
+import Work from "./Work";
 
-export default function Output({ personalInfo, summaryInfo, skills }) {
+export default function Output({
+  personalInfo,
+  summaryInfo,
+  skills,
+  experienceInfo,
+  roles,
+}) {
   return (
     <div className="output">
       <div className="info-section personal-section">
@@ -63,24 +70,13 @@ export default function Output({ personalInfo, summaryInfo, skills }) {
           <h2>Experience</h2>
         </div>
         <div>
-          <p>
-            <span>Facebook,</span>
-            <span>Menlo Park</span>
-            <span></span>
-          </p>
-        </div>
-        <div>
-          <p>
-            <span>August 2020</span>
-            <span>Today</span>
-          </p>
-        </div>
-        <div>
-          <ul>
-            <li>Designed intuitive questionnaires for collecting data.</li>
-            <li>Designed intuitive questionnaires for collecting data.</li>
-            <li>Designed intuitive questionnaires for collecting data.</li>
-          </ul>
+          <Work
+            place={experienceInfo.place}
+            position={experienceInfo.position}
+            start={experienceInfo.start}
+            end={experienceInfo.end}
+            roles={roles}
+          />
         </div>
       </div>
       <div className="info-section education-section">

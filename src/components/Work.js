@@ -8,7 +8,6 @@ export default function Work({ place, position, start, end, roles }) {
           <span>{place || "Facebook, Menlo Park"} </span>
           <span> - </span>
           <span>{position || "Crab Trainer"}</span>
-          <span></span>
         </p>
       </div>
       <div>

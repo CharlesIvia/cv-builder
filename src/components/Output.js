@@ -1,4 +1,5 @@
 import React from "react";
+import School from "./School";
 import Work from "./Work";
 
 export default function Output({
@@ -7,6 +8,8 @@ export default function Output({
   skills,
   experienceInfo,
   roles,
+  educationInfo,
+  learned,
 }) {
   return (
     <div className="output">
@@ -84,23 +87,7 @@ export default function Output({
           <h2>Education</h2>
         </div>
         <div>
-          <p>
-            <span>MIT,</span>
-            <span>Computer Science</span>
-          </p>
-        </div>
-        <div>
-          <p>
-            <span>August 2017</span>
-            <span>December 2020</span>
-          </p>
-        </div>
-        <div>
-          <ul>
-            <li>Designed intuitive questionnaires for collecting data.</li>
-            <li>Designed intuitive questionnaires for collecting data.</li>
-            <li>Designed intuitive questionnaires for collecting data.</li>
-          </ul>
+          <School educationInfo={educationInfo} learned={learned} />
         </div>
       </div>
 

@@ -41,6 +41,16 @@ export default function Home() {
   const [roles, setRoles] = useState([]);
   const [rolevalue, setRoleValue] = useState("");
 
+  const [educationInfo, setEducationInfo] = useState({
+    school: "",
+    degree: "",
+    start: "",
+    end: "",
+  });
+
+  const [learned, setLeanred] = useState([]);
+  const [learnedvalue, setLearnedValue] = useState("");
+
   //General logic
   let handleAllInformationChange = (e) => {
     let value = e.target.value;
@@ -103,6 +113,33 @@ export default function Home() {
       [e.target.name]: value,
     });
   };
+
+  //Education
+  let addLearned = (learn) => {
+    let newLearned = [...learned, { learn }];
+    setLeanred(newLearned);
+  };
+
+  let onLearnedChange = (e) => {
+    setLearnedValue(e.target.value);
+  };
+
+  let onLearnedSubmit = (e) => {
+    e.preventDefault();
+    if (!learnedvalue) return;
+    addLearned(learnedvalue);
+    setLearnedValue("");
+  };
+
+  let handleEducationChange = (e) => {
+    let value = e.target.value;
+    setEducationInfo({
+      ...educationInfo,
+      [e.target.name]: value,
+    });
+  };
+
+  //Tabs
   let onPersonalInfoClick = () => {
     setPersonalInfo(!showPersonalInfo);
     setSummary(false);
@@ -221,7 +258,15 @@ export default function Home() {
                 roleSubmit={onRoleSubmit}
               />
             ) : null}
-            {showEducation ? <Education /> : null}
+            {showEducation ? (
+              <Education
+                educationInfo={educationInfo}
+                educationChange={handleEducationChange}
+                value={learnedvalue}
+                learnedChange={onLearnedChange}
+                learnedSubmit={onLearnedSubmit}
+              />
+            ) : null}
             {showAwards ? <Awards /> : null}
           </div>
         </div>
@@ -232,6 +277,8 @@ export default function Home() {
             skills={skills}
             experienceInfo={experienceInfo}
             roles={roles}
+            educationInfo={educationInfo}
+            learned={learned}
           />
         </div>
       </div>

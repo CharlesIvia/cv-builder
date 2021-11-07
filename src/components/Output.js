@@ -10,6 +10,7 @@ export default function Output({
   roles,
   educationInfo,
   learned,
+  awardsInfo,
 }) {
   return (
     <div className="output">
@@ -96,10 +97,9 @@ export default function Output({
           <h2>Awards</h2>
         </div>
         <div>
-          <p>
-            <span>Devpost Covid-19 Global Hackathon Winner</span>
-            <span>2020</span>
-          </p>
+          {awardsInfo.map((award) => (
+            <p key={awardsInfo.indexOf(award)}>{award}</p>
+          ))}
         </div>
       </div>
     </div>

@@ -50,6 +50,8 @@ export default function Home() {
 
   const [learned, setLeanred] = useState([]);
   const [learnedvalue, setLearnedValue] = useState("");
+  const [awards, setAwards] = useState([]);
+  const [awardvalue, setAwardValue] = useState("");
 
   //General logic
   let handleAllInformationChange = (e) => {
@@ -137,6 +139,22 @@ export default function Home() {
       ...educationInfo,
       [e.target.name]: value,
     });
+  };
+
+  let addAward = (award) => {
+    let newAward = [...awards, award];
+    setAwards(newAward);
+  };
+
+  let onAwardChange = (e) => {
+    setAwardValue(e.target.value);
+  };
+
+  let onAwardSubmit = (e) => {
+    e.preventDefault();
+    if (!awardvalue) return;
+    addAward(awardvalue);
+    setAwardValue("");
   };
 
   //Tabs
@@ -267,7 +285,14 @@ export default function Home() {
                 learnedSubmit={onLearnedSubmit}
               />
             ) : null}
-            {showAwards ? <Awards /> : null}
+            {showAwards ? (
+              <Awards
+                awardsChange={onAwardChange}
+                awardsSubmit={onAwardSubmit}
+                awardsInfo={awards}
+                value={awardvalue}
+              />
+            ) : null}
           </div>
         </div>
         <div>
@@ -279,6 +304,7 @@ export default function Home() {
             roles={roles}
             educationInfo={educationInfo}
             learned={learned}
+            awardsInfo={awards}
           />
         </div>
       </div>
